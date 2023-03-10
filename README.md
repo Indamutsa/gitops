@@ -318,3 +318,7 @@ We then created the webhook on github. \
 The url is obtained ngrok: `ngrok http 8080`
 
 Change something in the code base, and then push. The webhook will be triggered on push
+
+
+After configuring the webhook using the generic webhook trigger plugin in jenkins,
+we create another pipeline for the configuration of the cluster, essentially to enable the run of kubernetes from argocd
