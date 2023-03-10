@@ -148,7 +148,7 @@ pipeline {
         
         stage('Trigger config change pipeline'){
             steps {
-                sh "curl -v -k arsene:1170503463a0d88ab3a2578a616ca8628e -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'https://057f-77-228-3-139.eu.ngrok.io/job/gitops-config/buildWithParameters?token=gitops-config'"
+                sh "curl -v -k --user arsene:1170503463a0d88ab3a2578a616ca8628e -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'https://057f-77-228-3-139.eu.ngrok.io/job/gitops-config/buildWithParameters?token=gitops-config'"
             }
         }
     }

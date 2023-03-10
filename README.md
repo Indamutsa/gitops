@@ -322,3 +322,6 @@ Change something in the code base, and then push. The webhook will be triggered 
 
 After configuring the webhook using the generic webhook trigger plugin in jenkins,
 we create another pipeline for the configuration of the cluster, essentially to enable the run of kubernetes from argocd
+
+Here is the repo of the configuration: \
+`https://github.com/Indamutsa/gitops-config.git`
