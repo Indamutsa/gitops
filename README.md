@@ -242,7 +242,7 @@ copy this:
 in .vscode/settings.json
 
 Create a jenkinsfile, and then enter some tests:
-
+```
 pipeline {
     agent any
     stages {
@@ -253,7 +253,7 @@ pipeline {
         }
     }
 }
-
+```
 
 ===========
 
@@ -268,7 +268,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 Let us get a workspace container:
 `docker run -it --rm -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host ubuntu bash`
 
-Let us # install curl & kubectl
+Let us # install curl & kubectl 
 ```
 apt update && apt upgrade -y && apt install curl wget nano -y
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
@@ -276,7 +276,7 @@ chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
 ```
 
-Let us install argocd cli:
+Let us install argocd cli: 
 
 ```
 curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
@@ -284,16 +284,19 @@ install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
 ```
 
-Access The Argo CD API Server¶
+Access The Argo CD API Server 
 ```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 The username is : admin \
-The password can be found:`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo`
+The password can be found: 
+`
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+`
 
 
-You can Login Using The CLI¶ \
+You can Login Using The CLI \
 `argocd login <ARGOCD_SERVER> ---> argocd login localhost:8020`
 
 change the password \
@@ -304,7 +307,14 @@ change the password \
 
 Create withcredentials in jenkins for git to update github after we have pushed the code to git in order to trigger argocd.
 
-Go to pipeline syntax, and select `withCredentials: Bind credentials to variables`
-Choose username and password separated in the bindig. You can
+Go to pipeline syntax, and select `withCredentials: Bind credentials to variables \
+Choose username and password separated in the bindig. 
 
 And then generate the script. Follow the instructions
+
+----------------------------------------------------------------
+
+We then created the webhook on github. \
+The url is obtained ngrok: `ngrok http 8080`
+
+Change something in the code base, and then push. The webhook will be triggered on push
