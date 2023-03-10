@@ -48,7 +48,7 @@ pipeline {
         stage('Updating Kubernetes deployment file'){
             steps {
                 sh "cat deployment.yml"
-                sh "sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml"
+                sh "sed -i 's/${APP_NAME}.*/${IMAGE_NAME}:${IMAGE_TAG}/g' deployment.yml"
                 sh "cat deployment.yml"
             }
         }
@@ -62,7 +62,7 @@ pipeline {
                     git commit -m 'Updated the deployment file' """
 
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh "git push http://$user:$pass@https://github.com/Indamutsa/gitops.git main"
+                        sh "echo $user $pass"
                     }
                 }
             }
