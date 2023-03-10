@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Checkout SCM'){
             steps {
-                git branch: 'main', 
+                git branch: 'dev', 
                 credentialsId: 'github', 
                 url: 'https://github.com/Indamutsa/gitops.git'
             }
@@ -62,7 +62,7 @@ pipeline {
                     git commit -m 'Updated the deployment file' """
 
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh "git push https://$user:$pass@github.com/Indamutsa/gitops.git main"
+                        sh "git push https://$user:$pass@github.com/Indamutsa/gitops.git dev"
                     }
                 }
             }
