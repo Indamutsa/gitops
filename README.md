@@ -316,6 +316,8 @@ And then generate the script. Follow the instructions
 
 We then created the webhook on github. \
 The url is obtained ngrok: `ngrok http 8080`
+We can run it in background using:
+`ngrok http 80 --log=stdout > ngrok.log &`
 
 Change something in the code base, and then push. The webhook will be triggered on push
 
