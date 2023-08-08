@@ -230,8 +230,8 @@ copy this:
     "jenkins-runner.hostConfigs": {
         "jenkins-master": {
             "url": "http://localhost:8080",
-            "user": "arsene",
-            "password": "arsene",
+            "user": "****",
+            "password": "****",
             "useCrumbIssuer": true
 
         }
