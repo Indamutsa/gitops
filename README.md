@@ -1,19 +1,19 @@
-# Let us create a devops full with Jenkins and argo cd
+# Building a DevOps Pipeline: Integrating Jenkins with Argo CD
 
 Let us spin up an image where we can work
 `ec2 run-instances --image-id ami-0557a15b87f6559cf --count 1 --instance-type t2.micro --key-name key-main --security-group-ids sg-0d718080abf254220 --subnet-id subnet-0b78dd8856d90b22c`
 
-Let us enable direct loggin through ssh keys
+Let us enable direct login through SSH keys
 
-To avoid logging in remote server with password or access key like 👍
+To avoid logging in a remote server with a password or access key like 👍
 `ssh -i key-main.pem ubuntu@54.225.6.176`
 
 We proceed with the steps below: \
 
-Let us first establish a secure with an ssh key \
+Let us first establish a secure connection with an SSH key \
 _run_: 
 `ssh-keygen -t rsa -b 4096` \
-The command uses rsa to generate a 4096-bit key pair. The key pair is stored in the ~/.ssh directory. The private key is named id_rsa and the public key is named id_rsa.pub.
+The command uses RSA to generate a 4096-bit key pair. The key pair is stored in the ~/.ssh directory. The private key is named id_rsa and the public key is named id_rsa.pub.
 
 To copy the public key to the remote host \
 _run_: \
